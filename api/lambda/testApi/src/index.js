@@ -1,15 +1,6 @@
 const https = require("https");
 
-exports.handler = async (event) => {
-    // Check HTTP method
-    if (event.httpMethod !== 'GET') {
-        return {
-            statusCode: 405,
-            headers: { 'Content-Type': 'text/plain' },
-            body: 'Method Not Allowed'
-        };
-    }
-
+exports.handler = async () => {
     const apiUrl = "https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1";
 
     // Fetch data from Deck of Cards API
@@ -22,7 +13,7 @@ exports.handler = async (event) => {
                 data += chunk;
             });
 
-            // Once the response is complete, resolve with API Gateway response format
+            // Once the response is complete, resolve with the API data
             apiResponse.on('end', () => {
                 resolve({
                     statusCode: 200,
