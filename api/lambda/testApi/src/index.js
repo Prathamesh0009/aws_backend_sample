@@ -32,3 +32,10 @@ exports.handler = async () => {
         });
     });
 };
+
+//use this only for local run
+// exports.handler().then(response => {
+//     console.log("Response:", response);
+// }).catch(error => {
+//     console.error("Error:", error);
+// });
